@@ -1,0 +1,305 @@
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 1rem;
+  z-index: 50;
+  transform: translateY(-160%);
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 0.9rem;
+  color: white;
+  background: var(--color-accent);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding: 1.1rem 0 0;
+  pointer-events: none;
+}
+
+.header-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: min(100% - 2rem, var(--content-width));
+  min-height: 3.6rem;
+  margin: 0 auto;
+  padding: 0.4rem 0.45rem 0.4rem 1.15rem;
+  border: 1px solid rgb(185 179 163 / 55%);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+  backdrop-filter: blur(18px);
+  pointer-events: auto;
+  transition:
+    min-height var(--transition-base),
+    padding var(--transition-base),
+    box-shadow var(--transition-base),
+    background var(--transition-base);
+}
+
+.site-header.is-scrolled .header-bar {
+  min-height: 3.1rem;
+  padding: 0.28rem 0.4rem 0.28rem 1rem;
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  box-shadow: 0 10px 30px rgb(20 21 19 / 6%);
+}
+
+.brand {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  color: var(--color-foreground);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.navigation-shell {
+  display: flex;
+  align-items: center;
+}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.primary-nav a {
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 0.78rem;
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.primary-nav a:hover,
+.primary-nav a.active {
+  color: var(--color-foreground);
+}
+
+.primary-nav a.active {
+  background: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.nav-toggle {
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  padding: 0;
+  color: var(--color-foreground);
+  background: transparent;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 1.15rem;
+  height: 1px;
+  margin: 0.32rem auto;
+  background: currentColor;
+  transition: transform var(--transition-fast);
+}
+
+.nav-toggle.is-open span:first-child {
+  transform: translateY(0.2rem) rotate(45deg);
+}
+
+.nav-toggle.is-open span:last-child {
+  transform: translateY(-0.2rem) rotate(-45deg);
+}
+
+.page-content {
+  width: min(100% - 3rem, var(--content-width));
+  min-height: calc(100vh - var(--header-offset));
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0 var(--space-7);
+}
+
+.page-content.page-enter {
+  animation: page-enter var(--transition-slow) both;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: var(--space-3);
+  color: var(--color-accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.live-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 0.28rem rgb(30 74 134 / 12%);
+  animation: pulse 2.4s infinite;
+}
+
+.page-summary {
+  max-width: 36rem;
+  margin-top: var(--space-3);
+  color: var(--color-secondary);
+  font-size: clamp(1rem, 1.4vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 2.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  padding: 0.7rem 1.05rem 0.7rem 1.2rem;
+  color: var(--color-foreground);
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.button:hover {
+  border-color: var(--color-foreground);
+  background: var(--color-foreground);
+  color: var(--color-background);
+}
+
+.button-primary {
+  border-color: var(--color-foreground);
+  color: var(--color-background);
+  background: var(--color-foreground);
+}
+
+.button-primary:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+.button-quiet {
+  border-color: transparent;
+}
+
+.button-arrow,
+.module-arrow {
+  display: inline-block;
+  transition: transform var(--transition-base);
+}
+
+.button:hover .button-arrow {
+  transform: translateX(0.2rem);
+}
+
+.button-danger {
+  color: var(--color-danger);
+}
+
+.button-small {
+  min-height: 2.15rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.68rem;
+}
+
+@media (max-width: 64rem) {
+  .primary-nav a {
+    padding: 0.5rem 0.58rem;
+    font-size: 0.64rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .site-header {
+    padding-top: 0.75rem;
+  }
+
+  .header-bar {
+    width: min(100% - 1.25rem, var(--content-width));
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .primary-nav {
+    position: absolute;
+    top: calc(100% + 0.55rem);
+    right: 0.65rem;
+    left: 0.65rem;
+    display: grid;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 1.15rem;
+    background: var(--color-surface);
+    opacity: 0;
+    transform: translateY(-0.4rem);
+    transition:
+      max-height var(--transition-base),
+      opacity var(--transition-fast),
+      transform var(--transition-fast),
+      border-color var(--transition-fast);
+  }
+
+  .primary-nav.is-open {
+    max-height: 28rem;
+    border-color: var(--color-border);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .primary-nav a {
+    padding: 0.95rem 1.15rem;
+    font-size: 0.78rem;
+    border-radius: 0;
+  }
+
+  .primary-nav a.active {
+    background: var(--color-surface-strong);
+    color: var(--color-foreground);
+  }
+
+  .page-content {
+    width: min(100% - 1.5rem, var(--content-width));
+    padding-top: 2.25rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .header-bar {
+    padding-left: 0.95rem;
+  }
+
+  .brand {
+    font-size: 0.72rem;
+  }
+}
